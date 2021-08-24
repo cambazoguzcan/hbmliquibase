@@ -1,0 +1,23 @@
+configurations {
+	liquibase
+  }
+  
+  task liquibaseDiffChangelog(type: JavaExec) {
+    
+	classpath sourceSets.main.runtimeClasspath
+	main = "liquibase.integration.commandline.Main"
+  
+	args "--changeLogFile=src/main/resources/db/changelog/"+ buildTimestamp() +"_changelog.xml"
+	args "--referenceUrl=hibernate:spring:com.definex.model?dialect=org.hibernate.dialect.SQLServerDialect"
+	args "--username=liquibase"
+	args "--password=liquibase"
+	args "--url=jdbc:sqlserver://localhost:1433;databaseName=liquibase"
+	args "--driver=com.microsoft.sqlserver.jdbc.SQLServerDriver"
+	args "diffChangeLog"
+  }
+  
+  def buildTimestamp() {
+	def date = new Date()
+	def formattedDate = date.format('yyyyMMddHHmmss')
+	return formattedDate
+  }

@@ -1,0 +1,38 @@
+plugins {
+	id 'org.springframework.boot' version '2.5.3'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id 'org.liquibase.gradle' version '2.0.4'
+}
+
+group = 'com.definex'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation group: 'org.liquibase', name: 'liquibase-core', version: '4.4.3'
+	implementation group: 'org.liquibase.ext', name: 'liquibase-hibernate5', version: '4.4.3'
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+apply from: 'liquibase.gradle'
+
+test {
+	useJUnitPlatform()
+}

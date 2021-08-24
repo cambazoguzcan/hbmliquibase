@@ -1,14 +1,33 @@
 .gradle
-/build/
-
-# Ignore Gradle GUI config
-gradle-app.setting
-
-# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
-!gradle-wrapper.jar
-
-# Cache of project
-.gradletasknamecache
-
-# # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
-# gradle/wrapper/gradle-wrapper.properties
+target
+build
+logs
+out
+customer.pid
+gradle.properties
+.surefire*
+.settings
+.project
+.classpath
+src/docs/asciidoc/generated/*
+src/docs/swagger/*.json
+.idea
+.idea/*
+.idea/gradle.xml
+.idea/libraries
+C:/
+$ProjectFileDir$customer-service/
+.DS_Store
+customer.pid
+src/main/resources/rebel.xml
+customer.iml
+.gradle
+.classpath
+.settings
+.project
+bin
+build
+target
+*.iml
+run.bat
+*.bak
